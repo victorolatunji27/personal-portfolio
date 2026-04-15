@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Saira+Stencil+One&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #0a0a0f;
+  --color-surface: #13131a;
+  --color-accent: #7c3aed;
+  --color-accent-secondary: #06b6d4;
+  --color-text-primary: #f1f5f9;
+  --color-text-muted: #94a3b8;
+}
+
+:root.light {
+  --color-bg: #f8fafc;
+  --color-surface: #ffffff;
+  --color-accent: #7c3aed;
+  --color-accent-secondary: #0891b2;
+  --color-text-primary: #0f172a;
+  --color-text-muted: #64748b;
+}
+
+html,
+body {
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: 'Inter', system-ui, sans-serif;
+  scroll-behavior: smooth;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+body {
+  cursor: none;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a,
+button,
+input,
+textarea,
+select,
+[role='button'] {
+  cursor: none;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  body,
+  a,
+  button,
+  input,
+  textarea,
+  select {
+    cursor: auto;
+  }
+}
+
+::selection {
+  background: rgba(124, 58, 237, 0.45);
+  color: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--color-accent), var(--color-accent-secondary));
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+.font-display {
+  font-family: 'Saira Stencil One', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.shimmer-bg {
+  background: linear-gradient(
+    90deg,
+    rgba(124, 58, 237, 0.08) 0%,
+    rgba(124, 58, 237, 0.25) 50%,
+    rgba(124, 58, 237, 0.08) 100%
+  );
+  background-size: 200% 100%;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.section-padding {
+  padding: 6rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 8rem 4rem;
+  }
+}
