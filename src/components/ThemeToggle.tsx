@@ -3,10 +3,31 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { FiCheck, FiDroplet } from 'react-icons/fi';
 import { useTheme } from '../context/ThemeContext';
 
+const MENU_HEIGHT_PX = 380; // approximate — used only to decide drop direction
+const MENU_WIDTH_PX = 224; // matches w-56
+
 export default function ThemeToggle() {
   const { theme, setTheme, themes } = useTheme();
   const [open, setOpen] = useState(false);
+  const [dropUp, setDropUp] = useState(false);
+  const [alignRight, setAlignRight] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
+  const btnRef = useRef<HTMLButtonElement>(null);
+
+  const handleToggle = () => {
+    setOpen((wasOpen) => {
+      const nextOpen = !wasOpen;
+      if (nextOpen && btnRef.current) {
+        const rect = btnRef.current.getBoundingClientRect();
+        const spaceBelow = window.innerHeight - rect.bottom;
+        const spaceAbove = rect.top;
+        setDropUp(spaceBelow < MENU_HEIGHT_PX && spaceAbove > spaceBelow);
+        // Flip menu alignment if opening to the right would overflow the viewport.
+        setAlignRight(rect.left + MENU_WIDTH_PX > window.innerWidth - 8);
+      }
+      return nextOpen;
+    });
+  };
 
   useEffect(() => {
     if (!open) return;
@@ -31,7 +52,8 @@ export default function ThemeToggle() {
   return (
     <div ref={rootRef} className="relative">
       <button
-        onClick={() => setOpen((v) => !v)}
+        ref={btnRef}
+        onClick={handleToggle}
         aria-label="Pick a color theme"
         aria-expanded={open}
         className="relative flex h-10 w-10 items-center justify-center rounded-full border text-textp transition-colors hairline hover:border-accent hover:text-accent"
@@ -51,11 +73,13 @@ export default function ThemeToggle() {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: -6, scale: 0.98 }}
+            initial={{ opacity: 0, y: dropUp ? 6 : -6, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -6, scale: 0.98 }}
+            exit={{ opacity: 0, y: dropUp ? 6 : -6, scale: 0.98 }}
             transition={{ duration: 0.18 }}
-            className="absolute right-0 z-50 mt-2 w-56 overflow-hidden rounded-2xl border shadow-2xl hairline-strong"
+            className={`absolute z-50 w-56 overflow-hidden rounded-2xl border shadow-2xl hairline-strong ${
+              dropUp ? 'bottom-full mb-2' : 'top-full mt-2'
+            } ${alignRight ? 'right-0' : 'left-0'}`}
             style={{ backgroundColor: 'var(--color-surface)' }}
             role="menu"
           >

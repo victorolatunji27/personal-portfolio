@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { FiCode, FiGithub, FiMusic, FiTool, FiCompass, FiSearch } from 'react-icons/fi';
-import { FaBasketballBall, FaFootballBall, FaDumbbell } from 'react-icons/fa';
+import { FiCode, FiGithub, FiMusic, FiTool, FiSearch } from 'react-icons/fi';
+import { FaBasketballBall, FaFootballBall, FaDumbbell, FaChessKnight } from 'react-icons/fa';
 import RevealSection from '../components/RevealSection';
 import SectionTitle from '../components/SectionTitle';
 import type { ReactNode } from 'react';
@@ -15,7 +15,7 @@ const items: { label: string; icon: ReactNode }[] = [
   { label: 'Hackathons', icon: <FiCode size={26} /> },
   { label: 'Open source', icon: <FiGithub size={26} /> },
   { label: 'Discovering new things', icon: <FiSearch size={26} /> },
-  { label: 'Exploring', icon: <FiCompass size={26} /> },
+  { label: 'Chess', icon: <FaChessKnight size={26} /> },
 ];
 
 function InterestCard({ label, icon, delay }: { label: string; icon: ReactNode; delay: number }) {
