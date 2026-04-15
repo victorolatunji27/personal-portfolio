@@ -19,7 +19,7 @@ const roles = [
     org: 'Hack4Impact',
     title: 'Full-Stack Developer & Project Designer',
     location: 'Remote',
-    period: 'September 2025 – Present',
+    period: 'September 2025 – January 2026',
     bullets: [
       'Deliver full-stack web applications using React.js, Firebase, Node.js, and REST APIs in a client-facing Agile/Scrum environment, shipping features on two-week sprint cycles.',
       'Translate client requirements into high-fidelity Figma prototypes, streamlining developer handoff and reducing design-iteration cycles.',
