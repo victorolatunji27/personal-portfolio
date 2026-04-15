@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FiArrowDown } from 'react-icons/fi';
 
-const ROLES = ['Full-Stack Developer', 'Hackathon Builder', 'IT Technician', 'Civic Tech Enthusiast'];
+const ROLES = ['Full-Stack Developer', 'Software Engineer', 'Frontend Developer', 'Student Field Technician'];
 
 function StarField() {
   const ref = useRef<HTMLCanvasElement>(null);
