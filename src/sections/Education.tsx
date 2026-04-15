@@ -30,7 +30,6 @@ export default function Education() {
               <h4 className="mb-2 text-xs font-semibold uppercase tracking-[0.25em] text-textm">Honors</h4>
               <ul className="space-y-1 text-sm text-textp">
                 <li>Data Justice Scholars Program</li>
-                <li>Goldman Sachs Possibilities Series (April 2026)</li>
               </ul>
             </div>
             <div>
@@ -50,7 +49,15 @@ export default function Education() {
               Organizations
             </h4>
             <div className="flex flex-wrap gap-2">
-              {['Code:BLACK', 'NSBE', 'ColorStack', 'Claude Builder Club', 'Black Business Association'].map(
+              {[
+                'Code:BLACK',
+                'NSBE',
+                'ColorStack',
+                'Claude Builder Club',
+                'Black Business Association',
+                'African Student Association',
+                'Black Student Union',
+              ].map(
                 (org) => (
                   <span
                     key={org}

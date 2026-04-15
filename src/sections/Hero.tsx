@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { FiArrowDown } from 'react-icons/fi';
+import { FiArrowDown, FiDownload } from 'react-icons/fi';
 
 const ROLES = ['Full-Stack Developer', 'Software Engineer', 'Frontend Developer', 'Student Field Technician'];
 
@@ -173,8 +173,9 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.65 }}
-          className="mt-10 flex flex-wrap items-center justify-center gap-4"
+          className="mt-10 flex flex-col items-center gap-4"
         >
+          <div className="flex flex-wrap items-center justify-center gap-4">
           <button
             onClick={() => scrollTo('projects')}
             className="group relative overflow-hidden rounded-full bg-accent px-7 py-3 text-sm font-semibold text-white transition-transform hover:scale-[1.03] shadow-glow"
@@ -189,6 +190,17 @@ export default function Hero() {
           >
             Get in touch
           </button>
+          </div>
+          <a
+            href={`${import.meta.env.BASE_URL}assets/Victor_Olatunji_Resume.pdf`}
+            download="Victor_Olatunji_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/10 px-6 py-2.5 text-sm font-semibold text-accent transition-all hover:bg-accent hover:text-white hover:shadow-glow"
+          >
+            <FiDownload className="transition-transform group-hover:translate-y-0.5" />
+            Download résumé
+          </a>
         </motion.div>
       </div>
 

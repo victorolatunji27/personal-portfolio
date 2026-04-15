@@ -4,22 +4,102 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* Default (midnight) */
+:root,
+:root[data-theme='midnight'] {
   --color-bg: #0a0a0f;
   --color-surface: #13131a;
   --color-accent: #7c3aed;
   --color-accent-secondary: #06b6d4;
   --color-text-primary: #f1f5f9;
   --color-text-muted: #94a3b8;
+  --hairline: rgba(255, 255, 255, 0.06);
+  --hairline-strong: rgba(255, 255, 255, 0.12);
+  --chip-bg: rgba(255, 255, 255, 0.05);
 }
 
-:root.light {
+:root[data-theme='daylight'] {
   --color-bg: #f8fafc;
   --color-surface: #ffffff;
   --color-accent: #7c3aed;
   --color-accent-secondary: #0891b2;
   --color-text-primary: #0f172a;
   --color-text-muted: #64748b;
+  --hairline: rgba(15, 23, 42, 0.08);
+  --hairline-strong: rgba(15, 23, 42, 0.18);
+  --chip-bg: rgba(15, 23, 42, 0.04);
+}
+
+:root[data-theme='ocean'] {
+  --color-bg: #07172e;
+  --color-surface: #0f2342;
+  --color-accent: #38bdf8;
+  --color-accent-secondary: #22d3ee;
+  --color-text-primary: #e0f2fe;
+  --color-text-muted: #93c5fd;
+  --hairline: rgba(148, 197, 255, 0.08);
+  --hairline-strong: rgba(148, 197, 255, 0.18);
+  --chip-bg: rgba(148, 197, 255, 0.06);
+}
+
+:root[data-theme='sunset'] {
+  --color-bg: #1a0e0a;
+  --color-surface: #2a1612;
+  --color-accent: #f97316;
+  --color-accent-secondary: #ec4899;
+  --color-text-primary: #fff7ed;
+  --color-text-muted: #d6bfa6;
+  --hairline: rgba(251, 191, 144, 0.08);
+  --hairline-strong: rgba(251, 191, 144, 0.18);
+  --chip-bg: rgba(251, 191, 144, 0.06);
+}
+
+:root[data-theme='forest'] {
+  --color-bg: #06150f;
+  --color-surface: #0f2519;
+  --color-accent: #22c55e;
+  --color-accent-secondary: #84cc16;
+  --color-text-primary: #ecfdf5;
+  --color-text-muted: #a7f3d0;
+  --hairline: rgba(134, 239, 172, 0.08);
+  --hairline-strong: rgba(134, 239, 172, 0.18);
+  --chip-bg: rgba(134, 239, 172, 0.06);
+}
+
+:root[data-theme='cyberpunk'] {
+  --color-bg: #0a0a1e;
+  --color-surface: #1a0a2e;
+  --color-accent: #ff006e;
+  --color-accent-secondary: #00f5ff;
+  --color-text-primary: #fdf4ff;
+  --color-text-muted: #c4b5fd;
+  --hairline: rgba(255, 0, 110, 0.12);
+  --hairline-strong: rgba(255, 0, 110, 0.28);
+  --chip-bg: rgba(255, 0, 110, 0.08);
+}
+
+:root[data-theme='terracotta'] {
+  --color-bg: #1e140c;
+  --color-surface: #2d1f14;
+  --color-accent: #ea580c;
+  --color-accent-secondary: #eab308;
+  --color-text-primary: #fef3c7;
+  --color-text-muted: #d6bfa6;
+  --hairline: rgba(234, 179, 8, 0.08);
+  --hairline-strong: rgba(234, 179, 8, 0.2);
+  --chip-bg: rgba(234, 179, 8, 0.06);
+}
+
+:root[data-theme='mono'] {
+  --color-bg: #0a0a0a;
+  --color-surface: #161616;
+  --color-accent: #e5e5e5;
+  --color-accent-secondary: #a3a3a3;
+  --color-text-primary: #fafafa;
+  --color-text-muted: #a3a3a3;
+  --hairline: rgba(255, 255, 255, 0.08);
+  --hairline-strong: rgba(255, 255, 255, 0.2);
+  --chip-bg: rgba(255, 255, 255, 0.05);
 }
 
 html,
@@ -28,7 +108,7 @@ body {
   color: var(--color-text-primary);
   font-family: 'Inter', system-ui, sans-serif;
   scroll-behavior: smooth;
-  transition: background-color 0.4s ease, color 0.4s ease;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 body {
@@ -58,7 +138,7 @@ select,
 }
 
 ::selection {
-  background: rgba(124, 58, 237, 0.45);
+  background: color-mix(in srgb, var(--color-accent) 45%, transparent);
   color: #ffffff;
 }
 
@@ -84,9 +164,9 @@ select,
 .shimmer-bg {
   background: linear-gradient(
     90deg,
-    rgba(124, 58, 237, 0.08) 0%,
-    rgba(124, 58, 237, 0.25) 50%,
-    rgba(124, 58, 237, 0.08) 100%
+    color-mix(in srgb, var(--color-accent) 8%, transparent) 0%,
+    color-mix(in srgb, var(--color-accent) 25%, transparent) 50%,
+    color-mix(in srgb, var(--color-accent) 8%, transparent) 100%
   );
   background-size: 200% 100%;
 }
@@ -106,4 +186,15 @@ select,
   .section-padding {
     padding: 8rem 4rem;
   }
+}
+
+/* Theme-aware hairlines replacing hard white overlays */
+.hairline {
+  border-color: var(--hairline) !important;
+}
+.hairline-strong {
+  border-color: var(--hairline-strong) !important;
+}
+.chip-bg {
+  background-color: var(--chip-bg) !important;
 }
